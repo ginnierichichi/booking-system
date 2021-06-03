@@ -27,7 +27,7 @@ class UnavailabilityFilter implements Filter
                             $generator->service->duration - $generator::INCREMENT
                         )
                     ),
-                    $unavailability->schdule->date->setTimeFrom(
+                    $unavailability->schedule->date->setTimeFrom(
                         $unavailability->end_time->subMinutes($generator::INCREMENT)
                     )
                 )) {

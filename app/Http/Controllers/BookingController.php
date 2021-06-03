@@ -18,7 +18,7 @@ class BookingController extends Controller
         $slots = (new TimeSlotGenerator($schedule, $service))
             ->applyFilters([
                     new SlotsPassedTodayFilter(),
-                    new UnavailabilityFilter($schedule->unavailabilites),
+                    new UnavailabilityFilter($schedule->unavailabilities),
                 ])
             ->get();
 
