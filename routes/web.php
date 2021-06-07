@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BookingController;
+use App\Http\Livewire\CreateBooking;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,4 +23,4 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
-Route::get('/bookings/create', BookingController::class);
+Route::get('/bookings/create', CreateBooking::class);
