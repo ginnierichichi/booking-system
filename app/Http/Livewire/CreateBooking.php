@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Employee;
 use App\Models\Service;
 use Livewire\Component;
 
@@ -40,6 +41,16 @@ class CreateBooking extends Component
         }
 
         return Service::find($this->state['service']);
+    }
+
+    //cached for the lifecycle of the livewire component.
+    public function getSelectedEmployeeProperty()
+    {
+        if (!$this->state['employee']) {
+            return null;
+        }
+
+        return Employee::find($this->state['employee']);
     }
 
     public function render()
