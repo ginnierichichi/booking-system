@@ -31,13 +31,19 @@
             @endforeach
         </div>
         <div class="max-h-52 overflow-y-scroll">
-            <input type="radio" name="time" id="" value="" class="sr-only" />
-            <label for="" class="w-full text-left focus:outline-none px-4 py-2 cursor-pointer flex items-center border-b border-gray-50">
+           @forelse($this->availableTimeSlot as $slot)
+            <input type="radio" name="time" id="time_{{$slot->timestamp}}" value="{{ $slot->timestamp }}" wire:model="time" class="sr-only" />
+            <label for="time_{{$slot->timestamp}}" class="w-full text-left focus:outline-none px-4 py-2 cursor-pointer flex items-center border-b border-gray-50">
+                @if($slot->timestamp == $time)
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                 </svg>
-                9:00
+                @endif
+                {{ $slot->format('g:i A') }}
             </label>
+                @empty
+               <div class="w-full text-left focus:outline-none px-4 py-2 cursor-pointer flex items-center border-b border-gray-50">No available time slots for today</div>
+            @endforelse
         </div>
     </div>
 </div>

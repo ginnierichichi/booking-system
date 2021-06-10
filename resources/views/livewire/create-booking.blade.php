@@ -14,7 +14,7 @@
                        <option value="">Select a Service</option>
                         @foreach($services as $slot)
                             <option value="{{$slot->id}}">
-                                {{ $slot->name }}
+                                {{ $slot->name }} ({{ $slot->duration }} mins)
                             </option>
                         @endforeach
                     </select>
@@ -32,8 +32,9 @@
                 </div>
                 <div class="mb-6 {{ !$this->selectedService || !$this->selectedEmployee ? 'opacity-25' : '' }}">
                     <label for="service" class="inline-block font-bold text-gray-700 mb-2">Select Appointment Time</label>
+
+                    <livewire:booking-calendar :service="$this->selectedService" :employee="$this->selectedEmployee" :key="optional($this->selectedEmployee)->id" />
                 </div>
-                <livewire:booking-calendar />
             </form>
         </div>
     </div>
